@@ -8,11 +8,11 @@ template<typename T>
 class ShellSorter : public Sorter<T>
 {
 public:
-	void operator()(Sequence<T>& sequence, std::function<bool(const T&, const T&)> comp) const override;
+	void operator()(Containers::Sequence<T>& sequence, std::function<bool(const T&, const T&)> comp) const override;
 };
 
 template<typename T>
-void ShellSorter<T>::operator()(Sequence<T>& sequence, std::function<bool(const T&, const T&)> comp) const
+void ShellSorter<T>::operator()(Containers::Sequence<T>& sequence, std::function<bool(const T&, const T&)> comp) const
 {
 	for (size_t step = sequence.GetLength() / 2; step != 0; step /= 2)
 		for (size_t i = step; i < sequence.GetLength(); i++)
