@@ -5,9 +5,10 @@
 #include"ListSequence.h"
 
 template<typename T>
-void Sort(Containers::Sequence<T>& arr, const Sorter<T>& sorter = ShellSorter<T>{})
+void Sort(Containers::Sequence<T>& arr, Sorter<T>& sorter = ShellSorter<T>{})
 {
 	sorter(arr);
+	std::cout << sorter.GetSwaps().size() << std::endl;
 }
 
 int main()
@@ -18,7 +19,9 @@ int main()
 		std::cout << arr.Get(i) << ' ';
 	}
 	std::cout << std::endl;
-	Sort(arr, InsertionSorter<int>{});
+	InsertionSorter<int> ins_sorter;
+	ShellSorter<int> shell_sorter;
+	Sort(arr, shell_sorter);
 	for (size_t i = 0; i < arr.GetLength(); i++)
 	{
 		std::cout << arr.Get(i) << ' ';

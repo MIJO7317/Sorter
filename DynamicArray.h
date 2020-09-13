@@ -275,7 +275,7 @@ namespace Containers
 		{
 			size_t r_shift = this->r_additional >= count ? count : this->r_additional;
 			size_t l_shift = count - r_shift;
-			for (size_t i = this->count - 1; i >= index; i--)
+			for (int i = this->count - 1; i >= index; i--)
 				std::swap(this->data[i + this->l_additional], this->data[i + this->l_additional + r_shift]);
 			if (l_shift)
 				for (size_t i = 0; i < index; i++)
@@ -452,7 +452,7 @@ namespace Containers
 	{
 		if (this->count == 0)
 			throw std::exception("Array is empty");
-		return this->data[this->l_additional + this->count];
+		return this->data[this->l_additional + this->count - 1];
 	}
 
 	template<typename T>
@@ -464,11 +464,11 @@ namespace Containers
 	}
 
 	template<typename T>
-	inline std::optional<T> DynamicArray<T>::Back() const
+	std::optional<T> DynamicArray<T>::Back() const
 	{
 		if (this->count == 0)
 			throw std::exception("Array is empty");
-		return this->data[this->l_additional + this->count];
+		return this->data[this->l_additional + this->count - 1];
 	}
 
 	template<typename T>

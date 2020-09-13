@@ -250,7 +250,6 @@ namespace Containers
 	template<typename T>
 	typename LinkedList<T>::iterator LinkedList<T>::Erase(iterator pos)
 	{
-		this->size--;
 		if (pos == this->end())
 			throw std::exception("Can't delete iterator end of the LinkedList");
 		pos.ptr->next->prev = pos.ptr->prev;
@@ -260,6 +259,7 @@ namespace Containers
 			pos.ptr->prev->next = pos.ptr->next;
 		Node* ptr_next = pos.ptr->next;
 		delete pos.ptr;
+		this->size--;
 		return iterator(ptr_next);
 	}
 
